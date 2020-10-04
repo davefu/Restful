@@ -2,3 +2,4 @@ libs/
 .idea/
 composer.lock
 /nbproject
+tests/Tests/coverage.dat

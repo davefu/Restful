@@ -10,7 +10,6 @@ use Nette\Configurator;
 use Nette\DI\ContainerBuilder;
 use Nette\DI\ServiceDefinition;
 use Nette\DI\Statement;
-use Nette\Diagnostics\Debugger;
 use Nette\Loaders\RobotLoader;
 use Nette\Utils\Validators;
 
@@ -292,7 +291,7 @@ class RestfulExtension extends CompilerExtension
 				$config['security']['privateKey'],
 				isset($config['security']['requestTimeKey']) ? $config['security']['requestTimeKey'] : 'timestamp'
 			))
-			->addSetup('Nette\Diagnostics\Debugger::getBar()->addPanel(?)', array('@self'));
+			->addSetup('Tracy\Debugger::getBar()->addPanel(?)', array('@self'));
 
 		$container->getDefinition('application')
 			->addSetup('$service->onStartup[] = ?', array(array($this->prefix('@panel'), 'getTab')));
